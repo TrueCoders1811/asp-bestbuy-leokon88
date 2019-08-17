@@ -1,0 +1,33 @@
+﻿
+@model EmployeeViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Employee ID</th>
+        <th>First Name</th>
+        <th>Middle Initial</th>
+        <th>Last Name</th>
+        <th>Email Address</th>
+        <th>Phone Number</th>
+        <th>Title</th>
+        <th>Date of Birth</th>
+    </tr>
+    @foreach (Employee emp in Model.EmployeeList)
+    {
+        <tr>
+            <td>@emp.EmployeeID</td>
+            <td>@emp.FirstName</td>
+            <td>@emp.MiddleInitial</td>
+            <td>@emp.LastName</td>
+            <td>@emp.EmailAdress</td>
+            <td>@emp.PhoneNumber</td>
+            <td>@emp.Title</td>
+            <td>@emp.DateOfBirth</td>
+        </tr>
+    }
+</table>

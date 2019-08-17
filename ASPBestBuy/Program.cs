@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 
 namespace ASPBestBuy
 {
@@ -14,6 +15,9 @@ namespace ASPBestBuy
     {
         public static void Main(string[] args)
         {
+            string jsonData = File.ReadAllText("appSettings.Debug.json");
+            SaleRepo.ConnectionString = JObject.Parse(jsonData)["ConnectionString"].ToString();
+            EmployeeRepo.ConnectionString = JObject.Parse(jsonData)["ConnectionString"].ToString();
             CreateWebHostBuilder(args).Build().Run();
         }
 

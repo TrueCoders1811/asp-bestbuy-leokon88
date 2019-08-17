@@ -1,0 +1,27 @@
+﻿@model SaleViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>SalesID</th>
+        <th>ProductID</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Date</th>
+        <th>EmployeeID</th>
+    </tr>
+    @foreach (Sale sale in Model.SalesList)
+    {
+        <tr>
+            <td>@sale.SalesID</td>
+            <td>@sale.ProductID</td>
+            <td>@sale.Quantity</td>
+            <td>@sale.Price</td>
+            <td>@sale.Date</td>
+            <td>@sale.EmployeeID</td>
+        </tr>
+    }
+</table>
