@@ -9,13 +9,14 @@ namespace ASPBestBuy.Controllers
 {
     public class SaleController : Controller
     {
-        public IActionResult Index()
+        public IActionResult ViewSales(int salesToView)
         {
             SaleRepo sr = new SaleRepo();
             SaleViewModel svm = new SaleViewModel();
-            svm.SalesList = sr.GetSales();
+            svm.SalesList = sr.ViewSales(salesToView);
 
             return View(svm);
         }
+
     }
 }

@@ -17,5 +17,10 @@ namespace ASPBestBuy.Controllers
 
             return View(evm);
         }
+
+        public IActionResult CreateNewEmployee()
+        {
+            return View();
+        }
     }
 }

@@ -36,14 +36,14 @@ namespace ASPBestBuy
             }
         }
 
-        public List<Sale> GetSales()
+        public List<Sale> ViewSales(int empID)
         {
             MySqlConnection connect = new MySqlConnection(ConnectionString);
             using (connect)
             {
                 connect.Open();
-                string sqlCmd = "SELECT SalesID, ProductID, Quantity, Price,Date,EmployeeID FROM Sales";//names must match exactly as specified in Class
-                return connect.Query<Sale>(sqlCmd).ToList();  //Query  - Dapper method .ToList - Linq method allows to convert arrays to list
+                string sqlCmd = "SELECT SalesID, ProductID, Quantity, Price,Date,EmployeeID FROM Sales WHERE EmployeeID like @empID;";//names must match exactly as specified in Class
+                return connect.Query<Sale>(sqlCmd,new { empID }).ToList();  //Query  - Dapper method .ToList - Linq method allows to convert arrays to list
             }
         }
 
