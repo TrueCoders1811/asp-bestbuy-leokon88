@@ -1,7 +1,7 @@
 ﻿
 @model EmployeeViewModel
 @{
-    ViewData["Title"] = " Index";
+    ViewData["Title"] = "Index";
 }
 
 <h2>Employee Data</h2>
@@ -14,7 +14,7 @@
 
 </script>
 <!--<a asp-area="" asp-controller="Sale" asp-action="Index">Sales</a>-->
-<a asp-controller="Employee" asp-action="CreateNewEmployee">Add New Employee</a>
+<a asp-controller="Employee" asp-action="CreateEmployeePage">Add New Employee</a>
 
 <table class="table table-bordered">
     <tr>
@@ -34,7 +34,7 @@
         <td>@emp.FirstName</td>
         <td>@emp.MiddleInitial</td>
         <td>@emp.LastName</td>
-        <td>@emp.EmailAdress</td>
+        <td>@emp.EmailAddress</td>
         <td>@emp.PhoneNumber</td>
         <td>@emp.Title</td>
         <td>@emp.DateOfBirth</td>

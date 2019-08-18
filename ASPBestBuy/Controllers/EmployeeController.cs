@@ -18,7 +18,14 @@ namespace ASPBestBuy.Controllers
             return View(evm);
         }
 
-        public IActionResult CreateNewEmployee()
+        public IActionResult CreateNewEmployee(Employee newEmployee)
+        {
+            EmployeeRepo er = new EmployeeRepo();
+            er.CreateEmployee(newEmployee);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult CreateEmployeePage()
         {
             return View();
         }

@@ -31,8 +31,8 @@ namespace ASPBestBuy
             using (connect)
             {
                 connect.Open();
-                string sqlCmd = "INSERT INTO Employees(EmployeeID, FirstName, MiddleInitial,LastName,EmailAddress,PhoneNumber" +
-                    "Title,DateOfBirth)(@fName, @mI,@lName,@email,@number,@title,@bDate);";
+                string sqlCmd = "INSERT INTO Employees(FirstName, MiddleInitial,LastName,EmailAddress,PhoneNumber,Title,DateOfBirth) " +
+                    "VALUES(@FirstName, @MiddleInitial,@LastName,@EmailAddress,@PhoneNumber, @Title,@DateOfBirth);";
                 connect.Execute(sqlCmd, createEmployee);
             }
         }
