@@ -1,0 +1,19 @@
+﻿@model EmployeeViewModel
+@{
+    ViewData["Title"] = "UpdateEmployeePage";
+}
+
+<h2>UpdateEmployeePage</h2>
+
+
+<form asp-action="UpdateEmployee" asp-controller="Employee">
+    <input type="hidden" name="EmployeeID" value="@Model.EmployeeID" />
+    <input type="text" required placeholder="First Name" name="FirstName" />
+    <input type="text" required placeholder="Middle Initial" name="MidleInitial" />
+    <input type="text" required placeholder="Last Name" name="LastName" />
+    <input type="text" required placeholder="Email Adress" name="EmailAddress" />
+    <input type="text" required placeholder="Title" name="Title" />
+    <input type="text" required placeholder="Phone Number" name="PhoneNumber" />
+    <input type="text" required placeholder="Date of Birth" name="DateOfBirth" />
+    <button type="submit">Update</button>
+</form>

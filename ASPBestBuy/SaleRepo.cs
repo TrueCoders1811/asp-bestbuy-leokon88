@@ -13,15 +13,15 @@ namespace ASPBestBuy
     {
         public static string ConnectionString { get; set; }
 
-        public void CreateSales(Sale sales)
+        public void CreateSales(Sale newSale)
         {
             MySqlConnection connect = new MySqlConnection(ConnectionString);
             using (connect)
             {
                 connect.Open();
                 string sqlCmd = "INSERT INTO Sales( ProductID, Quantity, Price,Date,EmployeeID)"
-                    + "VALUES(@SalesID,@ProductId, @Quantity, @Price,@Date,@EmployeesId)";
-                connect.Execute(sqlCmd, sales);
+                    + "VALUES(@ProductID, @Quantity, @Price,@Date,@EmployeeID);";
+                connect.Execute(sqlCmd, newSale);
             }
         }
 
@@ -31,7 +31,7 @@ namespace ASPBestBuy
             using (connect)
             {
                 connect.Open();
-                string sqlCmd = "Delete From sales WHERE salesId = @SaleID)";
+                string sqlCmd = "Delete From sales WHERE SalesID = @saleId)";
                 connect.Execute(sqlCmd, new { saleId });//pass anonymous type (class) since we are not passing entire sales
             }
         }
@@ -43,7 +43,7 @@ namespace ASPBestBuy
             {
                 connect.Open();
                 string sqlCmd = "SELECT SalesID, ProductID, Quantity, Price,Date,EmployeeID FROM Sales WHERE EmployeeID like @empID;";//names must match exactly as specified in Class
-                return connect.Query<Sale>(sqlCmd,new { empID }).ToList();  //Query  - Dapper method .ToList - Linq method allows to convert arrays to list
+                return connect.Query<Sale>(sqlCmd, new { empID }).ToList();  //Query  - Dapper method .ToList - Linq method allows to convert arrays to list
             }
         }
 

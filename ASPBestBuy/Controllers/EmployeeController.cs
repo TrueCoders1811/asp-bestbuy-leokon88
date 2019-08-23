@@ -29,5 +29,32 @@ namespace ASPBestBuy.Controllers
         {
             return View();
         }
+
+        public IActionResult UpdateEmployee(Employee updateEmployeeInfo)
+        {
+            EmployeeRepo er = new EmployeeRepo();
+            er.UpdateEmployee(updateEmployeeInfo);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult UpdateEmployeePage(int updateEmployeeInfo)
+        {
+            //create new employee and pass id to View
+            EmployeeViewModel evm = new EmployeeViewModel();
+            evm.EmployeeID = updateEmployeeInfo;
+
+            return View(evm);
+        }
+
+        public IActionResult DeleteEmployee(int deleteEmployeeInfo)
+        {
+            EmployeeRepo er = new EmployeeRepo();
+            er.DeleteEmployee(deleteEmployeeInfo);
+            return RedirectToAction("Index");
+
+            
+
+        }
     }
+
 }

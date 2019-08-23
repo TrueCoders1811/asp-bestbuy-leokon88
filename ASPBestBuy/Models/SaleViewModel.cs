@@ -9,5 +9,7 @@ namespace ASPBestBuy.Models
     {
         public List<Sale> SalesList { get; set; } = new List<Sale>();
 
+        public int EmployeeID { get; set; } //for Creating a new sale
+        public int SaleID { get; set; }  //for updating sale
     }
 }

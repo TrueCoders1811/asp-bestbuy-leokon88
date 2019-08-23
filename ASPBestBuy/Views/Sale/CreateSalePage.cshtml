@@ -1,0 +1,15 @@
+﻿@model SaleViewModel
+@{
+    ViewData["Title"] = "CreateSalePage";
+}
+
+<h2>CreateSalePage</h2>
+
+<form asp-action="CreateSale" asp-controller="Sale"> <!-- when submitted, data is sent to CreateSale Method-->
+   <input type="text" required placeholder="Prodcut ID" name="ProductID" />
+    <input type="text" required placeholder="Quantity" name="Quantity " />
+    <input type="text" required placeholder="Price" name="Price" />
+    <input type="text" required placeholder="Date" name="Date" />
+    <input type="hidden" name="EmployeeID" value="@Model.EmployeeID" />
+    <button type="submit">Create</button>
+</form>

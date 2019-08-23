@@ -6,14 +6,13 @@
 
 <h2>Employee Data</h2>
 <script>
-    function ConfirmView(form, EmployeeID) {
-        if (confirm("Are you sure you want to view sales from Employee #" + EmployeeID + "?")) {
+    function ConfirmDelete(form, EmployeeID) {
+        if (confirm("Are you sure you want to delete Employee #" + EmployeeID + "?")) {
             form.submit(); // if true, submit form
         }
     }
 
 </script>
-<!--<a asp-area="" asp-controller="Sale" asp-action="Index">Sales</a>-->
 <a asp-controller="Employee" asp-action="CreateEmployeePage">Add New Employee</a>
 
 <table class="table table-bordered">
@@ -29,21 +28,33 @@
     </tr>
     @foreach (Employee emp in Model.EmployeeList)
     {
-    <tr>
-        <td>@emp.EmployeeID</td>
-        <td>@emp.FirstName</td>
-        <td>@emp.MiddleInitial</td>
-        <td>@emp.LastName</td>
-        <td>@emp.EmailAddress</td>
-        <td>@emp.PhoneNumber</td>
-        <td>@emp.Title</td>
-        <td>@emp.DateOfBirth</td>
-        <td>
-        <form asp-action="ViewSales" asp-controller="Sale">
-            <input type="hidden" name="salesToView" value="@emp.EmployeeID" />  <!-- name must be same as the parameter in the called method -->
-            <input type="button" value="View Sales" onclick="ConfirmView(this.form,'@emp.EmployeeID')" />
-        </form>
+        <tr>
+            <td>@emp.EmployeeID</td>
+            <td>@emp.FirstName</td>
+            <td>@emp.MiddleInitial</td>
+            <td>@emp.LastName</td>
+            <td>@emp.EmailAddress</td>
+            <td>@emp.PhoneNumber</td>
+            <td>@emp.Title</td>
+            <td>@emp.DateOfBirth</td>
+            <td>
+                <form asp-action="ViewSales" asp-controller="Sale">
+                    <input type="hidden" name="empID" value="@emp.EmployeeID" />  <!-- name must be same as the parameter in the called method -->
+                    <input type="submit" value="View Sales" />
+                </form>
+                
+                    <form asp-action="UpdateEmployeePage" asp-controller="Employee">
+                        <input type="hidden" name="updateEmployeeInfo" value="@emp.EmployeeID" />  <!-- name must be same as the parameter in the called method -->
+                        <input type="submit" value="Update"  />
+                    </form>
+             
+                <form asp-action="DeleteEmployee" asp-controller="Employee">
+                    <input type="hidden" name="deleteEmployeeInfo" value="@emp.EmployeeID" />  
+                    <input type="button" value="Delete" onclick="ConfirmDelete(this.form,'@emp.EmployeeID')" />
+                </form>
+
+
             </td>
-    </tr>
+        </tr>
     }
 </table>

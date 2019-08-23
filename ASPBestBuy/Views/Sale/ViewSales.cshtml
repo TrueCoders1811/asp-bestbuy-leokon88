@@ -3,25 +3,42 @@
     ViewData["Title"] = "ViewSales";
 }
 
-<h2>Sales Record</h2>
-<table class="table table-bordered">
-    <tr>
-        <th>SalesID</th>
-        <th>ProductID</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Date</th>
-        <th>EmployeeID</th>
-    </tr>
-    @foreach (Sale sale in Model.SalesList)
+<form asp-action="CreateSalePage" asp-controller="Sale">
+    <input type="hidden" name="empID" value="@Model.EmployeeID" />
+    <button type="submit">Create New Sale</button>
+</form>
+
+    <!-- if statement to catch any employee without sales. If employee has no sales record, state no sale or return to main page-->
+    @if (Model.SalesList.Count() > 0)
     {
-        <tr>
-            <td>@sale.SalesID</td>
-            <td>@sale.ProductID</td>
-            <td>@sale.Quantity</td>
-            <td>@sale.Price</td>
-            <td>@sale.Date</td>
-            <td>@sale.EmployeeID</td>
-        </tr>
+        <h2>Sales Record</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th>SalesID</th>
+                <th>ProductID</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>EmployeeID</th>
+            </tr>
+
+            @foreach (Sale sale in Model.SalesList)
+            {
+                <tr>
+                    <td>@sale.SalesID</td>
+                    <td>@sale.ProductID</td>
+                    <td>@sale.Quantity</td>
+                    <td>@sale.Price</td>
+                    <td>@sale.Date</td>
+                    <td>@sale.EmployeeID</td>
+                </tr>
+            }
+        </table>
+
     }
-</table>
+    else
+    {
+        <h2>Employee has no sales record.</h2>
+
+    }
+    <a asp-controller="Employee" asp-action="Index">Back To Employee Page</a>

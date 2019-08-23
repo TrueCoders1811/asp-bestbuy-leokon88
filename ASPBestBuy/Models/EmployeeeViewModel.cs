@@ -8,5 +8,9 @@ namespace ASPBestBuy.Models
     public class EmployeeViewModel
     {
         public List<Employee> EmployeeList { get; set; } = new List<Employee>();
+
+        public int EmployeeID { get; set; }
     }
+    
 }
+
