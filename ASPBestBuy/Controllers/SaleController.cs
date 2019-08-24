@@ -34,6 +34,12 @@ namespace ASPBestBuy.Controllers
             return RedirectToAction("ViewSales", new { empID=createNewSale.EmployeeID });
         }
      
+       public IActionResult DeleteSale(int deleteSaleID)
+        {
+            SaleRepo sr = new SaleRepo();
+            sr.DeleteSales(deleteSaleID);                
+            return RedirectToAction("ViewSales");
+        }
 
     }
 }

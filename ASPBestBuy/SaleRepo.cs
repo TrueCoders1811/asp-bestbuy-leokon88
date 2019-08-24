@@ -31,7 +31,7 @@ namespace ASPBestBuy
             using (connect)
             {
                 connect.Open();
-                string sqlCmd = "Delete From sales WHERE SalesID = @saleId)";
+                string sqlCmd = "Delete From sales WHERE SalesID = @saleId;";
                 connect.Execute(sqlCmd, new { saleId });//pass anonymous type (class) since we are not passing entire sales
             }
         }

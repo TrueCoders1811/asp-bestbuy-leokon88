@@ -8,37 +8,56 @@
     <button type="submit">Create New Sale</button>
 </form>
 
-    <!-- if statement to catch any employee without sales. If employee has no sales record, state no sale or return to main page-->
-    @if (Model.SalesList.Count() > 0)
-    {
-        <h2>Sales Record</h2>
-        <table class="table table-bordered">
+<script>
+    function ConfirmDelete(form, SalesID) {
+        if (confirm("Are you sure you want to delete Sale ID#" + SalesID + "?")) {
+            form.submit(); // if true, submit form
+        }
+    }
+
+</script>
+
+<h2>Sales Record </h2>
+
+<!-- if statement to catch any employee without sales. If employee has no sales record, state no sale or return to main page-->
+@if (Model.SalesList.Count() > 0)
+{
+
+    <table class="table table-bordered">
+        <tr>
+            <th>SalesID</th>
+            <th>ProductID</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Date</th>
+            <th>EmployeeID</th>
+        </tr>
+
+        @foreach (Sale sale in Model.SalesList)
+        {
             <tr>
-                <th>SalesID</th>
-                <th>ProductID</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Date</th>
-                <th>EmployeeID</th>
+                <td>@sale.SalesID</td>
+                <td>@sale.ProductID</td>
+                <td>@sale.Quantity</td>
+                <td>@sale.Price</td>
+                <td>@sale.Date</td>
+                <td>@sale.EmployeeID</td>
+
+
+                <td>
+                    <form asp-action="DeleteSale" asp-controller="Sale">
+                        <input type="hidden" name="deleteSaleID" value="@sale.SalesID" />
+                        <input class="btn btn-danger" type="button" value="Delete" onclick="ConfirmDelete(this.form,'@sale.SalesID')" />
+                    </form>
+                </td>
             </tr>
+        }
+    </table>
 
-            @foreach (Sale sale in Model.SalesList)
-            {
-                <tr>
-                    <td>@sale.SalesID</td>
-                    <td>@sale.ProductID</td>
-                    <td>@sale.Quantity</td>
-                    <td>@sale.Price</td>
-                    <td>@sale.Date</td>
-                    <td>@sale.EmployeeID</td>
-                </tr>
-            }
-        </table>
+}
+else
+{
+    <h2>Employee has no sales record.</h2>
 
-    }
-    else
-    {
-        <h2>Employee has no sales record.</h2>
-
-    }
-    <a asp-controller="Employee" asp-action="Index">Back To Employee Page</a>
+}
+<a asp-controller="Employee" asp-action="Index">Back To Employee Page</a>
