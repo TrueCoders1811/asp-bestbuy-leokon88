@@ -15,6 +15,7 @@ namespace ASPBestBuy.Models
         public string PhoneNumber { get; set; }
         public string Title { get; set; }
         public DateTime DateOfBirth { get; set; }
+        public int SaleID { get; set; }
 
     }
 }

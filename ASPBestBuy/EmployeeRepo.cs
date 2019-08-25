@@ -50,14 +50,15 @@ namespace ASPBestBuy
             }
         }
 
-        public void DeleteEmployee(int deleteEmployeeId)
+        public void DeleteEmployee(int deleteEmployeeInfo)
         {
             MySqlConnection connect = new MySqlConnection(ConnectionString);
             using (connect)
             {
                 connect.Open();
-                string sqlCmd = "Delete From Employees WHERE EmployeeID=@deleteEmployeeId;";
-                connect.Execute(sqlCmd, new { deleteEmployeeId });
+                string sqlCmd = "Delete From Employees WHERE EmployeeID=@deleteEmployeeInfo;";
+               
+                connect.Execute(sqlCmd, new { deleteEmployeeInfo });
             }
         }
     }

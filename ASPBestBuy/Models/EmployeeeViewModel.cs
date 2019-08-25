@@ -10,6 +10,10 @@ namespace ASPBestBuy.Models
         public List<Employee> EmployeeList { get; set; } = new List<Employee>();
 
         public int EmployeeID { get; set; }
+
+        public int SalesID { get; set; }
+
+     
     }
     
 }
