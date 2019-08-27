@@ -49,13 +49,11 @@ namespace ASPBestBuy.Controllers
         public IActionResult DeleteEmployee(int deleteEmployeeInfo)
         {
             SaleRepo sr = new SaleRepo();
-            sr.DeleteSales(deleteEmployeeInfo);
+            sr.DeleteAllSales(deleteEmployeeInfo);
             EmployeeRepo er = new EmployeeRepo();
             er.DeleteEmployee(deleteEmployeeInfo );
           
             return RedirectToAction("Index");
-
-            
 
         }
     }

@@ -46,7 +46,8 @@
 
                 <td>
                     <form asp-action="DeleteSale" asp-controller="Sale">
-                        <input type="hidden" name="deleteSaleID" value="@sale.SalesID" />
+                        <input type="hidden" name="salesID" value="@sale.SalesID" />
+                        <input type ="hidden" name="employeeID" value="@sale.EmployeeID" />
                         <input class="btn btn-danger" type="button" value="Delete" onclick="ConfirmDelete(this.form,'@sale.SalesID')" />
                     </form>
                 </td>

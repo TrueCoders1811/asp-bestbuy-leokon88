@@ -33,13 +33,12 @@ namespace ASPBestBuy.Controllers
             sr.CreateSales(createNewSale);
             return RedirectToAction("ViewSales", new { empID=createNewSale.EmployeeID });
         }
-     
-       public IActionResult DeleteSale(int deleteSaleID)
+
+        public IActionResult DeleteSale(int salesID, int employeeID)
         {
             SaleRepo sr = new SaleRepo();
-            sr.DeleteSales(deleteSaleID);                
-            return RedirectToAction("ViewSales");
+            sr.DeleteSale(salesID);
+            return RedirectToAction("ViewSales", new { empID = employeeID });
         }
-
     }
 }

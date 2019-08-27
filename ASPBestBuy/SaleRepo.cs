@@ -25,17 +25,26 @@ namespace ASPBestBuy
             }
         }
 
-        public void DeleteSales(int employeeId)// delete sales by EmployeeID
+        public void DeleteAllSales(int employeeId)// delete sales by EmployeeID
+        {
+            MySqlConnection connect = new MySqlConnection(ConnectionString);
+            using (connect)
+            {
+               string sqlCmd = "Delete From sales WHERE EmployeeID = @EmployeeId;";
+                connect.Execute(sqlCmd, new { employeeId });//pass anonymous type (class) since we are not passing entire sales
+            }
+        }
+
+        public void DeleteSale(int salesId)// delete sales by EmployeeID
         {
             MySqlConnection connect = new MySqlConnection(ConnectionString);
             using (connect)
             {
                 connect.Open();
-                string sqlCmd = "Delete From sales WHERE EmployeeID = @EmployeeId;";
-                connect.Execute(sqlCmd, new { employeeId });//pass anonymous type (class) since we are not passing entire sales
+                string sqlCmd = "Delete From sales WHERE SalesID = @salesId;";  // right side match Sql column --left side retrieved parameter
+                connect.Execute(sqlCmd, new { salesId });//pass anonymous type (class) since we are not passing entire sales
             }
         }
-  
 
         public List<Sale> ViewSales(int empID)
         {
